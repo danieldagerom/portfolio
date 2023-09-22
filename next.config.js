@@ -4,7 +4,7 @@ const nextConfig = {
     appDir: true,
   },
   images: {
-    domains: ['media.graphassets.com'],
+    domains: ['media.graphassets.com', 'unbarqdsw2021-1.github.io'],
   },
 }
 

@@ -11,7 +11,7 @@ export const KnownTechs = () => {
           <KnownTech
             key={index}
             tech={{
-              icon: <TbBrandNextjs />,
+              icon: <TbBrandNextjs size={28} />,
               name: 'Next.js',
               startDate: '2021-02-01',
             }}
