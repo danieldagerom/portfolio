@@ -12,7 +12,7 @@ export const ProjectCard = () => {
           height={244}
           src="https://unbarqdsw2021-1.github.io/2021.1_G02_TaNaMesa_docs/assets/img/logo-contorno.png"
           alt="logotipo-tanamesa"
-          className="w-full h-[200px] sm:h=[300px] lg:w-[420px] lg:min-h-full object-cover rounded-lg "
+          className="w-full h-[200px] sm:h=[300px] lg:w-[420px] lg:min-h-full object-cover rounded-lg"
         />
       </div>
 
