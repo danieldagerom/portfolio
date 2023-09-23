@@ -4,7 +4,11 @@ const nextConfig = {
     appDir: true,
   },
   images: {
-    domains: ['media.graphassets.com', 'unbarqdsw2021-1.github.io'],
+    domains: [
+      'media.graphassets.com',
+      'unbarqdsw2021-1.github.io',
+      'www.almocogratis.com.br',
+    ],
   },
 }
 
