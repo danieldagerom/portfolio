@@ -2,11 +2,11 @@ import Image from 'next/image'
 
 const sections = [
   {
-    title: 'Home',
+    title: 'Cardápio',
     image: '/images/tanamesa02.jpg',
   },
   {
-    title: 'Gerência',
+    title: 'Gerência de pedidos',
     image: '/images/tanamesa03.jpg',
   },
 ]
