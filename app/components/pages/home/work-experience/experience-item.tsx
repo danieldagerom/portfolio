@@ -14,7 +14,7 @@ export const ExperienceItem = () => {
             alt="Logo da empresa AlmoçoGrátis"
           />
         </div>
-        <div className="h-full w[1px] bg-gray-800" />
+        <div className="h-full w-[1px] bg-gray-800" />
       </div>
       <div>
         <div className="flex flex-col gap-2 text-sm sm:text-base">
