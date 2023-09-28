@@ -1,7 +1,10 @@
 'use client'
 
 import { Button } from '@/app/components/button'
+import { CMSIcon } from '@/app/components/cms-icon'
+import { RichText } from '@/app/components/rich-text'
 import { TechBadge } from '@/app/components/tech-badge'
+import { HomePageInfo } from '@/app/types/page-info'
 import Image from 'next/image'
 import { HiArrowNarrowRight } from 'react-icons/hi'
 import { TbBrandGithub, TbBrandLinkedin, TbBrandWhatsapp } from 'react-icons/tb'
@@ -21,12 +24,18 @@ const MOCK_CONTACTS = [
   },
 ]
 
-export const HeroSection = () => {
+type HomeSectionProps = {
+  homeInfo: HomePageInfo
+}
+
+export const HeroSection = ({ homeInfo }: HomeSectionProps) => {
   const handleContact = () => {
     const contactSection = document.querySelector('#contact')
     if (contactSection) {
       contactSection.scrollIntoView({ behavior: 'smooth' })
     }
+
+    console.log('socials  ++++' + homeInfo.socials)
   }
   return (
     <section className="w-full lg:h-[755px] bg-hero-image bg-center bg-cover bg-no-repeat flex flex-col justify-end pb-10 sm:pb-32 py-32 lg:pb-[110px]">
@@ -34,15 +43,12 @@ export const HeroSection = () => {
         <div className="w-full lg:max-w-[530px]">
           <p className="font-mono text-emerald-400">Olá, meu nome é</p>
           <h2 className="text-4xl font-medium mt-2">Daniel Primo</h2>
-          <p className="text-gray-400 my-6 text-sm sm:text-base">
-            Sou apaixonado por tecnologia e a forma como ela pode diretamente
-            mudar a vida das pessoas. Como programador front-end, acredito que a
-            programação tem muito valor para abrir novas portas e construir
-            caminhos novos.
-          </p>
+          <div className="text-gray-400 my-6 text-sm sm:text-base">
+            <RichText content={homeInfo.introduction.raw} />
+          </div>
           <div className="flex flex-wrap gap-x-2 gap-y-3 lg:max-w-[340px]">
-            {Array.from({ length: 8 }).map((_, index) => (
-              <TechBadge name="React.js" />
+            {homeInfo.technologies.map((tech) => (
+              <TechBadge key={tech.name} name={tech.name} />
             ))}
           </div>
           <div className="mt-6 lg:mt-10 flex sm:items-center sm:gap-5 flex-col sm:flex-row">
@@ -52,15 +58,15 @@ export const HeroSection = () => {
             </Button>
 
             <div className="text-2xl text-gray-600 flex items-center h-20 gap-3">
-              {MOCK_CONTACTS.map((contact, index) => (
+              {homeInfo.socials.map((contact) => (
                 <a
                   href={contact.url}
-                  key={`contact-${index}`}
+                  key={contact.iconSvg}
                   target="_blank"
-                  rel="noreferrer"
                   className="hover:text-gray-100 transition-colors"
+                  rel="noreferrer"
                 >
-                  {contact.icon}
+                  <CMSIcon icon={contact.iconSvg} />
                 </a>
               ))}
             </div>
