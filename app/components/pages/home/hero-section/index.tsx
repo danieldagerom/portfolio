@@ -7,22 +7,6 @@ import { TechBadge } from '@/app/components/tech-badge'
 import { HomePageInfo } from '@/app/types/page-info'
 import Image from 'next/image'
 import { HiArrowNarrowRight } from 'react-icons/hi'
-import { TbBrandGithub, TbBrandLinkedin, TbBrandWhatsapp } from 'react-icons/tb'
-
-const MOCK_CONTACTS = [
-  {
-    url: 'https://github.com/danieldagerom',
-    icon: <TbBrandGithub />,
-  },
-  {
-    url: 'https://www.linkedin.com/in/daniel-primo-026406163/',
-    icon: <TbBrandLinkedin />,
-  },
-  {
-    url: 'https://api.whatsapp.com/send?phone=5561982899655&text=Ol%C3%A1,%20Daniel!%20Entrando%20em%20contato%20vindo%20do%20seu%20portif%C3%B3lio!',
-    icon: <TbBrandWhatsapp />,
-  },
-]
 
 type HomeSectionProps = {
   homeInfo: HomePageInfo
@@ -34,8 +18,6 @@ export const HeroSection = ({ homeInfo }: HomeSectionProps) => {
     if (contactSection) {
       contactSection.scrollIntoView({ behavior: 'smooth' })
     }
-
-    console.log('socials  ++++' + homeInfo.socials)
   }
   return (
     <section className="w-full lg:h-[755px] bg-hero-image bg-center bg-cover bg-no-repeat flex flex-col justify-end pb-10 sm:pb-32 py-32 lg:pb-[110px]">
@@ -76,7 +58,7 @@ export const HeroSection = ({ homeInfo }: HomeSectionProps) => {
         <Image
           width={420}
           height={404}
-          src="/images/profile-pic.png"
+          src={homeInfo.profilePic.url}
           alt="Foto de perfil de Daniel Primo"
           className="w-[300px] h-[300px] lg:w-[404px] lg:h-[404px] mb-6 lg:mg-0 shadow-2xl rounded-lg object-cover"
         />
