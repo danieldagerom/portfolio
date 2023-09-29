@@ -1,18 +1,24 @@
 import { Link } from '@/app/components/link'
 import { TechBadge } from '@/app/components/tech-badge'
+import { Project } from '@/app/types/projects'
 import Image from 'next/image'
 import { HiArrowNarrowRight } from 'react-icons/hi'
 
-export const ProjectCard = () => {
+type ProjectCardProps = {
+  project: Project
+}
+
+export const ProjectCard = ({ project }: ProjectCardProps) => {
   return (
     <div className="flex gap-6 lg:gap-12 flex-col lg:flex-row">
       <div className="w-full h-full">
         <Image
           width={250}
           height={244}
-          src="https://unbarqdsw2021-1.github.io/2021.1_G02_TaNaMesa_docs/assets/img/logo-contorno.png"
-          alt="logotipo-tanamesa"
+          src={project.thumbnail.url}
+          alt={`Thumbnail do projeto ${project.title}`}
           className="w-full h-[200px] sm:h=[300px] lg:w-[420px] lg:min-h-full object-cover rounded-lg"
+          unoptimized
         />
       </div>
 
@@ -24,26 +30,20 @@ export const ProjectCard = () => {
             alt=""
             src="/images/icons/project-title-icon.svg"
           />
-          Tá na mesa!
+          {project.title}
         </h3>
-        <p className="text-gray-400 my-6">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos
-          sapiente accusantium, obcaecati reprehenderit eius error reiciendis
-          corrupti sunt? Sapiente debitis numquam quas nulla architecto culpa
-          error praesentium sit labore. Non error tempore, atque corporis sequi
-          asperiores vitae, voluptatem dolore, itaque ab unde necessitatibus
-          cum? Quaerat quidem perspiciatis doloremque! Nihil, reiciendis!
-        </p>
+        <p className="text-gray-400 my-6">{project.shortDescription}</p>
 
         <div className="flex gap-x-2 gap-y-3 flex-wrap mb-8 lg:max-w-[350px]">
-          <TechBadge name="Next.js" />
-          <TechBadge name="Next.js" />
-          <TechBadge name="Next.js" />
-          <TechBadge name="Next.js" />
-          <TechBadge name="Next.js" />
+          {project.technologies.map((tech) => (
+            <TechBadge
+              key={`${project.title}-tech-${tech.name}`}
+              name={tech.name}
+            />
+          ))}
         </div>
 
-        <Link href="/projects/tanamesa">
+        <Link href={`/projects/${project.slug}`}>
           Ver projeto
           <HiArrowNarrowRight />
         </Link>

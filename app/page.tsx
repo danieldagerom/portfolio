@@ -27,6 +27,17 @@ const getPageData = async (): Promise<HomePageData> => {
         url
         iconSvg
       }
+      highlightProjects {
+        slug
+        thumbnail {
+          url
+        }
+        title
+        shortDescription
+        technologies {
+          name
+        }
+      }
     }
   }
   `
@@ -42,8 +53,8 @@ export default async function Home() {
   return (
     <>
       <HeroSection homeInfo={response.page} />
-      <KnownTechs />
-      <HighlightedProjects />
+      <KnownTechs tech={response.page.knownTechs} />
+      <HighlightedProjects projects={response.page.highlightProjects} />
       <WorkExperience />
     </>
   )
